@@ -25,16 +25,22 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;900&display=swap" rel="stylesheet">
 
+	<!-- Bootstrap -->
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 	
 	<!-- Site Styles -->
 	<link rel="stylesheet" type="text/css" id="theme" href="css/default.css">
+
+	<!-- All icons purchased from flaticon.com -->
 	<link rel="icon" type="image/x-icon" href="images/icons/cmd.png">
 
 	<!-- Site Scripts -->
 	<script type="text/javascript">	
 		let i = 1;
+		let subtimer = 1;
+		let degree = 95;
+		let background;
 		const text = [
 			"web developer. 👨‍💻",
 			"database engineer. ⚙️",
@@ -42,21 +48,22 @@
 			"runner. 🏃‍♂️",
 			"guitar player. 🎸"
 		];
-
-		let gradient = "linear-gradient(to right, rgb(255,0,0), rgb(255,0,150))";
-		let leftColor = [255, 0, 0];
-		let rightColor = [255, 0, 150];
-
-		// window.setInterval(function () {
-			
-		// 	document.getElementById("profile-image-wrapper").style.background = gradient;
-		// }, 2500);
-
+		
 		window.setInterval(function () {
-			document.getElementById("update-text").innerHTML = text[i];
-			i = ((i + 1) % text.length);
-		}, 2500);
+			// Rotate profile image border gradient by 7 degrees every 100ms
+			background = "background: linear-gradient(" + degree + "deg, #0e80c7, #8e7fd1, #d57cc0, #ff849f, #ff9d7c, #ffc168);";
+			document.getElementById("profile-image-wrapper").style = background;
+			degree = (degree + 7) % 360;
 
+			// Update about text every 2500ms
+			if (subtimer === 25) {
+				document.getElementById("update-text").innerHTML = text[i];
+				i = (i + 1) % text.length;
+				subtimer = 1;
+			} else {
+				subtimer++;
+			}
+		}, 100);
 	</script>
 </head>
 <body>
@@ -64,7 +71,7 @@
 	<div id="nav-box" class="container-lg">
 		<nav class="navbar navbar-light navbar-expand-md">
 			<div class="container-fluid">
-				<a class="navbar-brand underscore" href="index.html">
+				<a class="navbar-brand underscore" href="/">
 					<img id="logo-image" src="images/cmd.png" alt="Icon of a command prompt terminal.">
 					Keegan Woodward
 				</a>
@@ -74,10 +81,10 @@
 				</button>
 				<div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
 					<div class="navbar-nav">
-						<a class="nav-link underscore" aria-current="page" href="index.html">Home</a>
-						<a class="nav-link underscore" href="resume.html">Resume</a>
-						<a class="nav-link underscore" href="contact.html">Contact</a>
-						<a class="nav-link underscore" target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/keegan-woodward-498827230/">LinkedIn</a>
+						<a class="nav-link underscore" aria-current="page" href="/">Home</a>
+						<!-- <a class="nav-link underscore" href="resume.html">Resume</a>
+						<a class="nav-link underscore" href="contact.html">Contact</a> -->
+						<a class="nav-link underscore" target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/keegan-woodward/">LinkedIn</a>
 					</div>
 				</div>
 			</div>
@@ -86,7 +93,7 @@
 	
 	<div class="d-flex flex-wrap justify-content-center align-items-center px-1 py-5">
 		<div id="profile-image-wrapper">
-			<img id="profile-image" src="images/profile.jpeg" alt="Silhouette photo against a yellow background.">
+			<img id="profile-image" src="images/profile.jpeg" alt="A photo of myself.">
 		</div>
 	
 		<div style="padding-left: 1.5rem; overflow-x: hidden; white-space: nowrap;">
@@ -101,19 +108,19 @@
 	<main class="container-lg mb-4">
 
 		<div class="mb-5" style="max-width: 850px; margin: 0px auto">
-			<p>My name is Keegan Woodward and I currently work as an IT specialist for the State of Vermont. My job requires me to be a jack of all trades
+			<p>
+				My name is Keegan Woodward and I currently work as an IT specialist for the State of Vermont. My job requires me to be a jack of all trades
 				but I am looking to specialize in web development. While working as a system administrator, my role expanded to include developing
-				the deparment's work order management website almost full-time.</p>
+				the deparment's work order management website almost full-time.
+			</p>
 
-			<p>Throughout this process, I worked extensively with the front-end tools like HTML, CSS, Bootstrap, and jQuery.
-				On the back-end, I used C# and the .NET Framework. </p>
-			
-			<p>Web development isn't new to me. Experimenting with it in high school is what made me pursue computer science
+			<p>
+				Throughout this process, I worked extensively with the front-end tools like HTML, CSS, Bootstrap, and jQuery.
+				On the back-end, I used C# and the .NET Framework. Web development isn't new to me. Experimenting with it in high school is what made me pursue computer science
 				as a major in college. I want to continue that pursuit as a career.
 			</p>
 		</div>
 
-		<!-- Icons purchased from flaticon.com -->
 		<div class="row box mb-5">
 			<div class="col-md-4 p-4">
 				<div class="center">
@@ -135,7 +142,7 @@
 			</div>
 			<div class="col-md-4 p-4">
 				<div class="center">
-					<img src="images/icons/deploy.png" height="80px" alt="A rack of servers."></div>
+					<img src="images/icons/deploy.png" height="80px" alt="An rack of servers."></div>
 
 				<h3>Deploy</h3>
 
@@ -161,7 +168,7 @@
 
 	<footer class="p-4">
 		<div class="container-lg">
-			&copy; Keegan Woodward - 2022
+			&copy; 2022 by Keegan Woodward
 		</div>
 	</footer>
 </body>
