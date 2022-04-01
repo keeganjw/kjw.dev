@@ -119,7 +119,10 @@ p {
 	/* Generated using: https://learnui.design/tools/gradient-generator.html */
 	background: linear-gradient(90deg, #0e80c7, #8e7fd1, #d57cc0, #ff849f, #ff9d7c, #ffc168);
 	border-radius: 50%;
+	box-sizing: content-box;
 	padding: 6px;
+	height: auto;
+	width: 200px;
 }
 
 #subtitle {
